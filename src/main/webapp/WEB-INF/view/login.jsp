@@ -27,9 +27,9 @@
     <% if(request.getSession().getAttribute("user") != null){ %>
       <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
     <% } else{ %>
-      <a href="/login">Login</a>
       <a href="/register">Register</a>
     <% } %>
+    <a href="/login">Login</a>
     <a href="/about.jsp">About</a>
   </nav>
 
@@ -40,15 +40,21 @@
         <h2 class="error"><%= request.getAttribute("error") %></h2>
     <% } %>
 
-    <form action="/login" method="POST">
-      <label for="username">Username: </label>
-      <input type="text" name="username" id="username">
-      <br/>
-      <label for="password">Password: </label>
-      <input type="password" name="password" id="password">
-      <br/><br/>
-      <button type="submit">Login</button>
-    </form>
+   <% if(request.getSession().getAttribute("user") == null) {%>
+        <form action="/login" method="POST">
+       <label for="username">Username: </label>
+       <input type="text" name="username" id="username">
+       <br/>
+       <label for="password">Password: </label>
+       <input type="password" name="password" id="password">
+       <br/><br/>
+       <button type="submit" value="login" name="login">Login</button>
+        </form>
+   <% } else {%>
+        <form action="/login" method="POST">
+       <button type="submit" value="logout" name="logout">Logout</button>
+        </form>
+   <% } %>
   </div>
 </body>
 </html>
