@@ -84,3 +84,9 @@ App Engine devserver.
 - Bring the devserver back up by executing `mvn clean appengine:devserver`
 again.
 - Refresh your browser to see your changes!
+
+## Step 6: Push the change
+
+```
+git push
+```
